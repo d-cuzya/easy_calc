@@ -26,7 +26,7 @@ int main() {
         setlocale(LC_ALL, "Russian");
         char math_action;
         bool error = false;
-        float result, x, y;
+        float result, num;
 
         std::cout << "КАЛЬКУЛЯТОР" << std::endl;
         std::cout << "Ввидите что вы хотите сделать: +, -, *, /" << std::endl ;
@@ -39,29 +39,46 @@ int main() {
                 std::cin >> math_action;
                 chek_error(math_action, error);
         }
-
-        std::cout << std::endl << "Отлично! Давай выберим 2 числа с которыми ты хочешь провести это действие!" << std::endl << "Число №1: ";
-        std::cin >> x;
-        std::cout << std::endl << "Число №2: ";
-        std::cin >> y;
-        std::cout << std::endl << "Результат: ";
-
+        
+        std::cout << "Введите со сколькими числами вы хотите это сделать:" << std::endl;
+        int quantity;
+        std::cin >> quantity;
+        
         switch (math_action) {
         case '+':
-                result = x + y;
-                std::cout << result;
+        		result =0;
+                for (int x = 1; x <= quantity; x++) {
+					std::cout << "Введите число №" << x <<":"<<std::endl;
+					std::cin >> num;
+					result+=num;
+				}
                 break;
         case '-':
-                result = x - y;
-                std::cout << result;
+        		result = 0;
+        		for (int x = 1; x <= quantity; x++) {
+					std::cout << "Введите число №" << x <<":"<<std::endl;
+					std::cin >> num;
+					result-=num;
+        		}
                 break;
         case '*':
-                result = x * y;
-                std::cout << result;
+        		result = 1;
+        		for (int x = 1; x <= quantity; x++) {
+					std::cout << "Введите число №" << x <<":"<<std::endl;
+					std::cin >> num;
+					result*=num;
+        		}
                 break;
         case '/':
-                result = x / y;
-                std::cout << result;
+        		std::cout << "Введите число №1:" <<std::endl;
+        		std::cin >> result;
+        		for (int x = 2; x <= quantity; x++) {
+					std::cout << "Введите число №" << x <<":"<<std::endl;
+					std::cin >> num;
+					result/=num;
+        		}
                 break;
         }
+        
+        std::cout << "Результат: " << result;
 }
